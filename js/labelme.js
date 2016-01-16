@@ -14,11 +14,6 @@
     var boxHeight = 40;
     var boxWidth = 70;
 
-    var decaf_options = {
-        "X": "Decaf",
-        "1/2": "Half Decaf",        
-    };
-
     var labelSpecs = {
         "5161/5261/5961/8161" : {
             width:      4,
@@ -64,9 +59,17 @@
     // set a default
     var chosenLabel = labelSpecs["5066/5202/5266/5366/8366"];
 
+    var decaf_options = {
+        "X": "Decaf",
+        "1/2": "Half Decaf",        
+    };
+
+    // shots is an inline loop for compact display
+
     var syrup_options = {
         "A":    "Almond",
         "C":    "Caramel Syrup",
+        "CD":   "Cinnamon Dolce",
         "CH":   "Chai",
         "CL":   "Classic Syrup",
         "CN":   "Cinnamon",
@@ -77,59 +80,66 @@
         "R":    "Raspberry",
         "SFH":  "Sugar Free Hazelnut",
         "SFV":  "Sugar Free Vanilla",
+        "TN":   "Toffee Nut",
         "V":    "Vanilla",
         "VA":   "Valencia",
         "WM":   "White Chocolate Mocha Syrup",
     };
 
     var milk_options = {
-        "B":   "Breve (half-and-half)",
-        "E":   "Eggnog (seasonal)",
-        "%":   "50% whole, 50% non-fat",
-        "N":   "Nonfat",
-        "S":   "Soy",
-        "O":   "Organic Milk",
+        "B":    "Breve (half-and-half)",
+        "L":    "Lactose Free",
+        "E":    "Eggnog (seasonal)",
+        "%":    "50% whole, 50% non-fat",
+        "HC":   "Heavy Cream",
+        "N":    "Nonfat",
+        "S":    "Soy",
+        "O":    "Organic Milk",
+        "WH":   "Whole Milk",
     };
 
     var custom_options = {
-        "CHIP?":     "Add chips",
-        "CR?":       "Caramel Sauce",
-        "D?":        "Dry",
-        "DB?":       "Double Blended",
-        "F?":        "Foamy",
-        "H?":        "Hot",
-        // "K":        "Kid’s Beverage (tiny size, cooler temperature)",
+        "BT":       "Black Tea",
+        "CHIP?":    "Add chips",
+        "CR?":      "Caramel Sauce",
+        "D?":       "Dry",
+        "DB?":      "Double Blended",
+        "F?":       "Foamy",
+        "GT":       "Green Tea",
+        "H?":       "Hot",
         "K":        "Kid’s Beverage",
-        // "LT":       "Light (used before another code)",
-        "-H2O":      "No Water",
-        "SL?":       "Sweet’n Low",
-        "SP?":       "Splenda",
-        "STRAB?":    "Strawberry Fruit Sauce",
-        "SR?":       "Sugar in the raw",
-        "VBEAN?":    "Vanilla Bean Powder",
-        "W?":        "Wet",
-        "WC?":       "Whipped Cream",
-        // "X":        "Extra",
-        "=?":        "Equal",
+        "MT":       "Matcha Green Tea Powder",        
+        "-H2O":     "No Water",
+        "PT":       "Passion Tea",
+        "SL?":      "Sweet’n Low",
+        "SP?":      "Splenda",
+        "ST?":      "Strawberry Sauce",
+        "SR?":      "Sugar in the raw",
+        "VB?":      "Vanilla Bean Powder",
+        "W?":       "Wet",
+        "WC?":      "Whipped Cream",
+        "=?":       "Equal",
     };
 
     var drink_options = {
-        "Standard": {
+        "Hot": {
+            "BC":       "Brewed Coffee",
             "A":        "Caffe Americano",
             "AL":       "Cafe au Lait",
-            "BC":       "Brewed Coffee",
             "C":        "Cappuccino",
             "CAC":      "Caramel Apple Cider",
             "CB":       "Caramel Brule Latte",
+            "CM":       "Caramel Macchiato",
             "CH":       "Tazo Chai Tea Latte",
             "CHEG":     "Tazo Chai Eggnog Tea Latte",
-            "CM":       "Caramel Macchiato",
             "E":        "Espresso",
             "ECP":      "Espresso Con Panna",
             "EGTL":     "Earl Grey Tea Latte (aka “London Fog”)",
             "EM":       "Espresso Macchiato",
             "EL":       "Eggnog Latte",
+            "FL":       "Flat White",
             "GL":       "Gingerbread Latte",
+            "GRTL":     "Green Tea Latte",
             "HC":       "Hot Chocolate",
             "L":        "Caffe Latte",
             "LM":       "Latte Macchiato",
@@ -144,36 +154,50 @@
             "SKM":      "Skinny Mocha",
             "SM":       "Steamed Milk",
             "T":        "Tazo Tea",
+            "TMIS":     "Tea Misto",
             "VCR":      "Vanilla Cream",
-            "WHC":      "White Hot Chocolate",
             "WM":       "White Chocolate Mocha",
+            "WHC":      "White Hot Chocolate",
             "CHA":      "Chantico",
         },
-        "Blended": {
-            "CBF":      "Caramel Brule Frappuccino",
-            "CF":       "Coffee",
-            "CVF":      "Caffe Vanilla",
+        "Frappuccino": {
+            "CBF":      "Caramel Brule",
             "CRF":      "Caramel",
-            "E":        "Espresso",
-            "EF":       "Eggnog Frappuccino",
-            "GF":       "Gingerbread Frappuccino",
-            "JCF":      "Java Chip",
-            "MF":       "Mocha",
-            "PMF":      "Peppermint Mocha Frappuccino",
-            "PSF":      "Pumpkin Spice Frappuccino",
-            "PWMF":     "Peppermint White Chocolate Mocha Frappuccino",
-            "WMF":      "White Chocolate Mocha Frappuccino",
-            "CHCF":     "Tazo Chai Creme",
+            "CRFL":     "Caramel Light",
+            "CVF":      "Caffé Vanilla",
+            "CVFL":     "Caffé Vanilla Light",
+            "CF":       "Coffee",
+            "CFL":      "Coffee Light",
+            "CVF":      "Caffe Vanilla",
             "DCCF":     "Double Chocolate Chip",
-            "STCF":     "Strawberries & Creme",
-            "SF":       "Syrup Creme",
+            "EF":       "Espresso",
+            "EFL":      "Espresso Light",
+            "GF":       "Gingerbread",
+            "GTF":      "Green Tea",
+            "JCF":      "Java Chip",
+            "JCFL":     "Java Chip Light",
+            "MF":       "Mocha",
+            "MFL":      "Mocha Light",
+            "PMF":      "Peppermint Mocha",
+            "PSF":      "Pumpkin Spice",
+            "PWMF":     "Peppermint White Chocolate Mocha",
+            "STCF":     "Strawberries & Créme",
+            "SF":       "Syrup Créme",
+            "CHCF":     "Tazo Chai Créme",
+            "STCF":     "Strawberries & Créme",
+            "SF":       "Syrup Créme",
             "VBF":      "Vanilla Bean",
+            "WMF":      "White Chocolate Mocha",
+            "WMFL":     "White Chocolate Mocha Light",
         },
         "Iced": {
-            "IC":       "Iced Coffee",
-            "BT/PT":    "Iced Black Tea / Iced Passion Tea",
-            "BTL":      "Iced Black Tea Lemonade",
-            "PTL":      "Iced Passion Tea Lemonade",
+            "IC":   "Coffee",
+            "BT":   "Black Tea",
+            "BTL":  "Black Tea Lemonade",
+            "GT":   "Green Tea",
+            "GTL":  "Green Tea Lemonade",
+            "PT":   "Passion Tea",
+            "PTL":  "Passion Tea Lemonade",
         },
     }
 
@@ -319,19 +343,19 @@
         var form = document.createElement('div');
         var label = document.createElement('h4')
         label.appendChild(document.createTextNode('Shots'));
-        label.className = "col-sm-4 shot-label";
+        label.className = "col-sm-3 shot-label";
         form.appendChild(label);
         var list = document.createElement('ul')
         list.id = 'Shots-selector';
-        list.className = "selectable shot-list col-sm-8";
-        for (var i = 1; i <= 4; i++) {
+        list.className = "selectable shot-list col-sm-9";
+        ['R',1,2,3,4].forEach(function(i){
             var shot = document.createElement('li');
             shot.appendChild(document.createTextNode(i));
-            shot.className="col-sm-2 ui-widget-content";
+            shot.className="pull-left ui-widget-content";
             shot.dataset.value = i;
             shot.style.textAlign = "center";
             list.appendChild(shot);
-        };
+        });
         form.appendChild(list);
         return form;
     }
@@ -445,7 +469,7 @@
         ctx.strokeStyle = fgcolor;
         ctx.lineWidth = 2.25;
 
-        var y = drawSize(labelHeight);
+        var y = drawSize(labelHeight*0.6);
         console.log('running boxes');
         ["Decaf", "Shots", "Syrup", "Milk", "Custom", "Drink"].forEach(function(box){
             // console.log('#' + box + '-selector li.ui-selected');
