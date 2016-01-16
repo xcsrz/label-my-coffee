@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Label My Coffee</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jQuery UI CSS -->
+    <link href="public/lib/jquery-ui/themes/overcast/jquery-ui.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/labelme.css" rel="stylesheet">
+    <style>
+    body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Label My Coffee</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#" id='start-over'>Start Over</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Label Size <span class="caret"></span></a>
+                        <ul class="dropdown-menu" id="label-option-dropdown"></ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Download <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a id="download-vertical-btn">Vertical</a></li>
+                            <li><a id="download-horizontal-btn">Horizontal</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a id="print-btn">Print Label</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        <section class="row">
+            <div class="col-sm-2 col-sm-offset-1">
+                <div id="sizeContainer">
+                    <select id="selected-size">
+                        <option value="Tall">Tall</option>
+                        <option value="Grande">Grande</option>
+                        <option value="Venti">Venti</option>
+                    </select>
+                </div>
+                <canvas id="labelDesign" class="col-sm-12" height="500"></canvas>
+            </div>
+            <div id="labelOptions" class="col-sm-8 col-sm-offset-0"></div>
+        </section>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+    <!-- hidden canvas to render rotated label for printing -->
+    <canvas id="sidewaysLabel" width="500" height="90"></canvas>
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="public/lib/jquery/dist/jquery.min.js"></script>
+    <script src="public/lib/jquery-ui/jquery-ui.min.js"></script>
+    <script src="public/lib/jspdf/dist/jspdf.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/labelme.js"></script>
+</body>
+
+</html>

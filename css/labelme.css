@@ -1,0 +1,42 @@
+
+canvas#labelDesign {
+	border: solid black 1px;
+}
+
+/*#feedback { font-size: 1em; }*/
+.selectable .ui-selecting { background: #FECA40; }
+.selectable .ui-selected { background: #F39814; color: white; }
+.selectable { list-style-type: none; margin: 0; padding: 0; }
+.selectable li { margin: 2px; padding: 0.2em; }
+
+#drink-type-select, #selected-size {
+	width: 100%;	
+}
+
+.shot-label {
+	margin: 0.7em 0em 0em 0em;
+	padding: 0.2em;
+}
+
+.shot-list li {
+	padding: 0.1em;
+	margin: 1em 0.3em;
+	/*margin-bottom: 0.9em;*/
+}
+
+#printerFrameoff {
+	width: 1px;
+	height: 1px;
+	position: absolute;
+	top: -200px;
+	left: -200px;
+}
+
+#sidewaysLabel {
+	position: absolute;
+	top: -500px;
+}
+
+.modifier-dropdown {
+	float: right;
+}
