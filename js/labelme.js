@@ -7,7 +7,7 @@
     var printCtx = printCanvas.getContext('2d');
     // printCtx.rotate(-90);
     var bgcolor = '#fefefa';
-    var fgcolor = '#337733';
+    var fgcolor = '#00592d';
     var fontName = 'Montserrat';
     var labelHeight = 12;
     var contentHeight = 30;
